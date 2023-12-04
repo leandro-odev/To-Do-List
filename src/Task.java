@@ -21,6 +21,10 @@ public class Task {
         return titulo;
     }
 
+    public String getCategoria() {
+        return categoria;
+    }
+
     public boolean isStatus() {
         return status;
     }

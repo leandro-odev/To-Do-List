@@ -76,7 +76,7 @@ public class TaskManager {
     }
 
     private void printaTasks() {
-        System.out.println("Digite:\n1 para printar todas as tasks\n2 para printar as tasks concluídas\noutro para printar tasks não concluidas");
+        System.out.println("Digite:\n1 para printar todas as tasks\n2 para printar as tasks concluídas\n3 para printar tasks não concluidas\noutro para escolher uma categoria específica");
         String escolha = input.nextLine().strip();
         if (escolha.equals("1")) {
             System.out.println("Suas tarefas:");
@@ -94,11 +94,44 @@ public class TaskManager {
                     System.out.println("-------------");
                 }
             }
-        } else {
+        } else if(escolha.equals("3")) {
             System.out.println("Suas tarefas:");
             System.out.println("-------------");
             for (int i = 0; i < tasks.size(); i++) {
                 if (!tasks.get(i).isStatus()) {
+                    System.out.println(tasks.get(i).toString());
+                    System.out.println("-------------");
+                }
+            }
+        } else {
+            System.out.println("Categorias disponiveis:");
+            ArrayList<String> categorias = new ArrayList<String>();
+
+            for(int i = 0; i < tasks.size(); i++) {
+                String categoria_atual = tasks.get(i).getCategoria();
+                if (!categorias.contains(categoria_atual)) {
+                    categorias.add(categoria_atual);
+                    System.out.println(categoria_atual);
+                }
+            }
+
+            String categoria_escolha;
+            while (true) {
+                System.out.println("Escolha o nome da categoria desejada:");
+                categoria_escolha = input.nextLine().strip();
+                if (categorias.contains(categoria_escolha)) {
+                    break;
+                }
+                else {
+                    System.out.println("Categoria inexistente, ou escrita errada. Tente novamente");
+                }
+            }
+
+            System.out.println("Suas tarefas:");
+            System.out.println("-------------");
+
+            for (int i = 0; i < tasks.size(); i++) {
+                if (tasks.get(i).getCategoria().equals(categoria_escolha)) {
                     System.out.println(tasks.get(i).toString());
                     System.out.println("-------------");
                 }
