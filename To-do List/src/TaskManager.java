@@ -337,7 +337,7 @@ public class TaskManager {
             case "2": // a fazer
                 ArrayList<Task> tasksAFazer = new ArrayList<>();
                 for (Task task : tasks) {
-                    if (task.isStatus().equals("Feito")) {
+                    if (task.isStatus().equals("A fazer")) {
                         tasksAFazer.add(task);
                     }
                 }
@@ -355,7 +355,7 @@ public class TaskManager {
             case "3": // concluidas
                 ArrayList<Task> tasksConcluidas = new ArrayList<>();
                 for (Task task : tasks) {
-                    if (task.isStatus().equals("A fazer")) {
+                    if (task.isStatus().equals("Feito")) {
                         tasksConcluidas.add(task);
                     }
                 }
